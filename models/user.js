@@ -1,6 +1,4 @@
-/** @format */
-
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const confiq = require("../config/config").get(process.env.NODE_ENV);
@@ -39,7 +37,7 @@ const userSchema = mongoose.Schema({
 });
 // to signup a user
 userSchema.pre("save", function (next) {
-  var user = this;
+  let user = this;
   if (user.isModified("password")) {
     bcrypt.genSalt(salt, function (err, salt) {
       if (err) return next(err);
@@ -66,8 +64,8 @@ userSchema.methods.comparepassword = function (password, cb) {
 // generate token
 
 userSchema.methods.generateToken = function (cb) {
-  var user = this;
-  var token = jwt.sign(user._id.toHexString(), confiq.SECRET);
+  let user = this;
+  let token = jwt.sign(user._id.toHexString(), confiq.SECRET);
 
   user.token = token;
   user.save(function (err, user) {
@@ -78,7 +76,7 @@ userSchema.methods.generateToken = function (cb) {
 
 // find by token
 userSchema.statics.findByToken = function (token, cb) {
-  var user = this;
+  let user = this;
 
   jwt.verify(token, confiq.SECRET, function (err, decode) {
     user.findOne({ _id: decode, token: token }, function (err, user) {
@@ -91,7 +89,7 @@ userSchema.statics.findByToken = function (token, cb) {
 //delete token
 
 userSchema.methods.deleteToken = function (token, cb) {
-  var user = this;
+  let user = this;
 
   user.update({ $unset: { token: 1 } }, function (err, user) {
     if (err) return cb(err);
@@ -100,3 +98,5 @@ userSchema.methods.deleteToken = function (token, cb) {
 };
 
 module.exports = mongoose.model("User", userSchema);
+
+

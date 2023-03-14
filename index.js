@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
@@ -97,7 +95,6 @@ app.get("/api/logout", auth, function (req, res) {
     res.sendStatus(200);
   });
 });
-
 
 // get logged in user
 app.get("/api/profile", auth, function (req, res) {

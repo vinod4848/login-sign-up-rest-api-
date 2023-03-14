@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const User = require("./models/user");
 const { auth } = require("./middlewares/auth");
 const db = require("./config/config").get(process.env.NODE_ENV);
-
+const cors = require("cors");
 const app = express();
 // app use
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -110,6 +110,7 @@ app.get("/", function (req, res) {
   res.status(200).send(`Welcome to login , sign-up api`);
 });
 
+app.use(cors());
 // listening port
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

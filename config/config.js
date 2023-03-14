@@ -8,7 +8,7 @@ const config = {
   default: {
     SECRET: "mysecretkey",
     DATABASE:
-      "mongodb+srv://Vinodku4848:Vinod123@cluster0.z6zy1tq.mongodb.net/prisma",
+      "mongodb+srv://Vinodku4848:Vinod123@cluster0.z6zy1tq.mongodb.net/login-nd-sign-up",
   },
 };
 

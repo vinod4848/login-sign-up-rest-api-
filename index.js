@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const User = require("./models/user");
 const { auth } = require("./middlewares/auth");
 const db = require("./config/config").get(process.env.NODE_ENV);
-
+const cors = require("cors");
 const app = express();
 // app use
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -22,7 +22,7 @@ mongoose.connect(
     console.log("database is connected");
   }
 );
-
+app.use(cors());
 // adding new user (sign-up route)
 app.post("/api/register", function (req, res) {
   // taking a user

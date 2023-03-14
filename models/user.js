@@ -10,11 +10,6 @@ const userSchema = mongoose.Schema({
     required: true,
     maxlength: 100,
   },
-  lastname: {
-    type: String,
-    required: true,
-    maxlength: 100,
-  },
   email: {
     type: String,
     required: true,
@@ -22,11 +17,6 @@ const userSchema = mongoose.Schema({
     unique: 1,
   },
   password: {
-    type: String,
-    required: true,
-    minlength: 8,
-  },
-  password2: {
     type: String,
     required: true,
     minlength: 8,
@@ -44,7 +34,6 @@ userSchema.pre("save", function (next) {
       bcrypt.hash(user.password, salt, function (err, hash) {
         if (err) return next(err);
         user.password = hash;
-        user.password2 = hash;
         next();
       });
     });

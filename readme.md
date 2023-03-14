@@ -71,3 +71,16 @@ for installing the above packages you have to run the below command
 
     $ yarn build
 "# login-sign-up-rest-api-s" 
+
+
+https://ochre-angelfish-hose.cyclic.app
+
+/api/register
+
+/api/login
+
+/api/logout
+
+/api/profile
+
+/

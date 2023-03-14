@@ -29,7 +29,7 @@ app.post("/api/register", function (req, res) {
   const newuser = new User(req.body);
   console.log(newuser);
 
-  if (newuser.password != newuser.password2)
+  if (newuser.password != newuser.password)
     return res.status(400).json({ message: "password not match" });
 
   User.findOne({ email: newuser.email }, function (err, user) {
@@ -102,7 +102,7 @@ app.get("/api/profile", auth, function (req, res) {
     isAuth: true,
     id: req.user._id,
     email: req.user.email,
-    name: req.user.firstname + req.user.lastname,
+    username: req.user.username,
   });
 });
 

@@ -5,12 +5,7 @@ const confiq = require("../config/config").get(process.env.NODE_ENV);
 const salt = 10;
 
 const userSchema = mongoose.Schema({
-  firstname: {
-    type: String,
-    required: true,
-    maxlength: 100,
-  },
-  lastname: {
+  username: {
     type: String,
     required: true,
     maxlength: 100,
@@ -26,11 +21,7 @@ const userSchema = mongoose.Schema({
     required: true,
     minlength: 8,
   },
-  password2: {
-    type: String,
-    required: true,
-    minlength: 8,
-  },
+
   token: {
     type: String,
   },
